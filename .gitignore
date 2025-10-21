@@ -1,0 +1,37 @@
+# Ignorar entorno virtual
+env/
+venv/
+django_env/
+
+# Ignorar base de datos SQLite (se usa fixtures en su lugar)
+db.sqlite3
+
+# Archivos y carpetas de caché de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Archivos de migración compilados
+*.pyc
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración local
+*.env
+.env
+.env.*
+
+# Ignorar archivos de VS Code u otros editores/IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar colectados si se usa collectstatic
+/static/

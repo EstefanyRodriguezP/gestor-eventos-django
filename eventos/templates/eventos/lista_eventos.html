@@ -1,0 +1,26 @@
+{% extends 'eventos/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Lista de Eventos</h2>
+
+    {% for evento in object_list %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ evento.titulo }}</h5>
+                <p class="card-text">{{ evento.descripcion|truncatechars:100 }}</p>
+                <p class="card-text"><small class="text-muted">Fecha: {{ evento.fecha }}</small></p>
+
+                <a href="{% url 'eventos:detalle_evento' evento.pk %}" class="btn btn-primary btn-sm">Ver Detalle</a>
+
+                {% if evento.creador == user or user.groups.first.name == 'Administradores' %}
+                    <a href="{% url 'eventos:editar_evento' evento.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'eventos:eliminar_evento' evento.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                {% endif %}
+            </div>
+        </div>
+    {% empty %}
+        <p>No hay eventos disponibles.</p>
+    {% endfor %}
+</div>
+{% endblock %}

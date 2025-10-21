@@ -1,0 +1,38 @@
+{% extends 'eventos/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ view.title }}</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            {{ form.titulo.label_tag }} {{ form.titulo }}
+            {{ form.titulo.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.descripcion.label_tag }} {{ form.descripcion }}
+            {{ form.descripcion.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.fecha.label_tag }} {{ form.fecha }}
+            {{ form.fecha.errors }}
+        </div>
+
+        <div class="mb-3">
+            {{ form.ubicacion.label_tag }} {{ form.ubicacion }}
+            {{ form.ubicacion.errors }}
+        </div>
+
+        <div class="mb-3 form-check">
+            {{ form.privado }} {{ form.privado.label_tag }}
+            {{ form.privado.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-success">{{ button_text }}</button>
+        <a href="{% url 'eventos:lista_eventos' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'eventos/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ object.titulo }}</h2>
+    <p><strong>Fecha:</strong> {{ object.fecha }}</p>
+    <p><strong>Descripción:</strong> {{ object.descripcion }}</p>
+    <p><strong>Privado:</strong> {{ object.privado|yesno:"Sí,No" }}</p>
+
+    <a href="{% url 'eventos:lista_eventos' %}" class="btn btn-secondary">Volver a la lista</a>
+
+    {% if object.creador == user or user.groups.first.name == 'Administradores' %}
+        <a href="{% url 'eventos:editar_evento' object.pk %}" class="btn btn-warning">Editar</a>
+    {% endif %}
+    {% if user.is_authenticated and user.groups.first.name == 'Asistentes' %}
+    {% if user not in object.asistentes.all %}
+        <form action="{% url 'eventos:registrar_asistencia' object.pk %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Registrarme al evento</button>
+        </form>
+    {% else %}
+        <p class="text-success"><strong>Ya estás registrado en este evento.</strong></p>
+    {% endif %}
+{% endif %}
+</div>
+{% endblock %}
