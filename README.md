@@ -83,7 +83,8 @@ python manage.py runserver
 
 | Rol         | Usuario       | Contraseña       |
 |-------------|---------------|------------------|
-| Admin       | `admin`       | `admin`       |
+| SuperUser       | `admin`       | `admin`       |
+| Admin       | `ana1234`       | `0.123456as`       |
 | Organizador | `oscar1234` | `0.123456as` |
 | Asistente   | `jose1234`   | `0.123456as`   |
 

@@ -17,7 +17,8 @@
         </div>
 
         <div class="mb-3">
-            {{ form.fecha.label_tag }} {{ form.fecha }}
+            {{ form.fecha.label_tag }}
+            {{ form.fecha }}  {# el widget ya incluye type="datetime-local" y min="..." #}
             {{ form.fecha.errors }}
         </div>
 
@@ -35,4 +36,4 @@
         <a href="{% url 'eventos:lista_eventos' %}" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
-{% endblock %}
+{% endblock %} 
